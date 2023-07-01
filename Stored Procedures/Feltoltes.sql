@@ -41,7 +41,7 @@ BEGIN
 			INSERT INTO Vehicle (Type, Brand, PlateNr, OwnerPersonID)
 			VALUES (@Tipus,@Brand,@Rendszam,@PersonID);
 
-			SET @VehicleID = (SELECT TOP 1 ID FROM Vehicle ORDER BY NEWID());
+			SET @VehicleID = (SELECT TOP 1 ID FROM Vehicle ORDER BY ID DESC);
 			INSERT INTO HasLicence(PersonID,VehicleID)
 			VALUES (@PersonID,@VehicleID);
 			SET @RefuelingCount = 5;
