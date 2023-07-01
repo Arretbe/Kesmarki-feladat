@@ -33,7 +33,7 @@ BEGIN
 			FROM (
 				SELECT 'Motor' AS Tipus
 				UNION ALL
-				SELECT 'Aut�' AS Tipus
+				SELECT 'Autó' AS Tipus
 			) AS tmp
 			ORDER BY NEWID();
 			
