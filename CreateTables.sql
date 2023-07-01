@@ -1,0 +1,29 @@
+CREATE TABLE Person (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    LastName VARCHAR(50) NOT NULL,
+    FirstName VARCHAR(50) NOT NULL
+);
+CREATE TABLE Vehicle (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    Type VARCHAR(50) NOT NULL,
+    Brand VARCHAR(50) NOT NULL,
+    PlateNr VARCHAR(6) UNIQUE NOT NULL,
+    OwnerPersonID INT,
+    FOREIGN KEY (OwnerPersonID) REFERENCES Person(id)
+);
+CREATE TABLE HasLicence (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    PersonID INT,
+    VehicleID INT,
+    FOREIGN KEY (PersonID) REFERENCES Person(ID),
+    FOREIGN KEY (VehicleID) REFERENCES Vehicle(ID)
+);
+CREATE TABLE Refueling (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    VehicleID INT,
+    PersonID INT,
+	RefuelingDate DATETIME NOT NULL,
+	Amount NUMERIC(10,2) NOT NULL,
+    FOREIGN KEY (PersonID) REFERENCES Person(ID),
+    FOREIGN KEY (VehicleID) REFERENCES Vehicle(ID)
+);
